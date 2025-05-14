@@ -1,0 +1,4 @@
+# x = Throughput; y = PacketSize;
+energy_consumption = "700 + 20 * x * x - 0.0008 * y"  
+dz/dx = "40 * x"
+dz/dy = -0.0008

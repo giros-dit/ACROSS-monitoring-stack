@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-r7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: ml-r7-app
+  template:
+    metadata:
+      labels:
+        app: ml-r7-app
+    spec:
+      volumes:
+      - configMap:
+          defaultMode: 0755
+          name: ml-config
+        name: ml-config
+      containers:
+      - name: ml-r7-service
+        image: mariovicente/ml:latest
+        command: ["python3", "-u", "/ml/ml.py"]
+        args: ["TP_r7", "ML_r7"]
+        volumeMounts:
+        - name: ml-config
+          mountPath: /ml/ml-config.txt
+          subPath: ml-config.txt
+      
+        
+        
