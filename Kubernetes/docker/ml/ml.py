@@ -49,18 +49,18 @@ producer = KafkaProducer(
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
  
-csv_file = "latency-test.csv"
+#csv_file = "latency-test.csv"
  
-def init_csv():
-    try:
-        with open(csv_file, 'x', newline='') as file:
-            fieldnames = ["epoch_timestamp", "collector_timestamp", "process_timestamp", "ml_timestamp"]
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writeheader()
-    except FileExistsError:
-        pass
+#def init_csv():
+#    try:
+#        with open(csv_file, 'x', newline='') as file:
+#            fieldnames = ["epoch_timestamp", "collector_timestamp", "process_timestamp", "ml_timestamp"]
+#            writer = csv.DictWriter(file, fieldnames=fieldnames)
+#            writer.writeheader()
+#    except FileExistsError:
+#        pass
  
-init_csv()
+#init_csv()
  
 # Define a function to apply a formula from text file
 def calculate_energy_consumption(formulas, val_x, val_y):
@@ -86,17 +86,17 @@ def calculate_dz_dy(formulas):
 def ml_generator(message):
     """Generate output JSON format from input ML metrics."""
  
-    epoch_timestamp = float(message["debug_params"]["epoch_timestamp"])
-    collector_timestamp = float(message["debug_params"]["collector_timestamp"])
-    process_timestamp_ms = message["debug_params"]["process_timestamp"]
-    process_timestamp = float(process_timestamp_ms) / 1000
-    ml_timestamp_raw = f"{time.time()}"
-    ml_timestamp = float(ml_timestamp_raw)
+    #epoch_timestamp = float(message["epoch_timestamp"])
+    #collector_timestamp = float(message["debug_params"]["collector_timestamp"])
+    #process_timestamp_ms = message["debug_params"]["process_timestamp"]
+    #process_timestamp = float(process_timestamp_ms) / 1000
+    #ml_timestamp_raw = f"{time.time()}"
+    #ml_timestamp = float(ml_timestamp_raw)
  
-    with open(csv_file, 'a', newline='') as file:      
-        fieldnames = ["epoch_timestamp", "collector_timestamp", "process_timestamp", "ml_timestamp"]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writerow({"epoch_timestamp": epoch_timestamp, "collector_timestamp": collector_timestamp, "process_timestamp": process_timestamp, "ml_timestamp": ml_timestamp})
+    #with open(csv_file, 'a', newline='') as file:      
+    #    fieldnames = ["epoch_timestamp", "collector_timestamp", "process_timestamp", "ml_timestamp"]
+    #    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    #    writer.writerow({"epoch_timestamp": epoch_timestamp, "collector_timestamp": collector_timestamp, "process_timestamp": process_timestamp, "ml_timestamp": ml_timestamp})
  
     for metric in message["input_ml_metrics"]:
         print("metric", metric)
@@ -122,7 +122,7 @@ def ml_generator(message):
     dz_dx = calculate_dz_dx(formulas, occupation)
     dz_dy = calculate_dz_dy(formulas)
  
-    message["debug_params"]["ml_timestamp"] = ml_timestamp
+    message["debug_params"]["ml_timestamp"] = f"{time.time()}"
  
     message["output_ml_metrics"] = [
         {
