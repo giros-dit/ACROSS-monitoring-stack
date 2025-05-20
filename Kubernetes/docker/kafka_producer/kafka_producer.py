@@ -171,6 +171,7 @@ def test_metrics(router):
     period = periods[test_metrics_iterator[router_name]]
 
     timestamp = f"{time.time()}"
+    print(f"Timestamp: {timestamp}")
 
     return {
         'node_exporter': f"{router_name}:9100",

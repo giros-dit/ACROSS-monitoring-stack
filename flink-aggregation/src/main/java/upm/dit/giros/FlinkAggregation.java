@@ -154,6 +154,7 @@ public class FlinkAggregation {
     
                         // Aggregated metrics calculus for bytes and packets rates
                         Double time = (timestamp2 - timestamp1);
+                        System.out.println("\nTime: " + time);
                         Double traffic_rate = (value2 - value1)/time;
                         
                         // Ignore events if node failure detected
