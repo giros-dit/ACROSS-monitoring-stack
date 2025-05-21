@@ -53,8 +53,8 @@ headers = ["Router", "Epoch→Collector(ms)", "Collector→Process(ms)", "Proces
 tabla_str = tabulate(tabla, headers=headers, tablefmt="grid")
 print(tabla_str)
 
-with open("latency_results.txt", "w") as f:
-    f.write(tabla_str)
-
-df_result = pd.DataFrame(tabla, columns=headers)
-df_result.to_csv("latency_results.csv", index=False)
+#with open("latency_results.txt", "w") as f:
+#    f.write(tabla_str)
+#
+#df_result = pd.DataFrame(tabla, columns=headers)
+#df_result.to_csv("latency_results.csv", index=False)
