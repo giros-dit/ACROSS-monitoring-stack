@@ -10,7 +10,7 @@
             "r1": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r1_9100.json",
                 "topic": "TD_r1",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth3"],
                 "test_metrics": false
             }
         },
@@ -50,7 +50,7 @@
             "r6": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r6_9100.json",
                 "topic": "TD_r6",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth3"],
                 "test_metrics": false
             }
         },
@@ -58,7 +58,7 @@
             "r7": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r7_9100.json",
                 "topic": "TD_r7",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth1"],
                 "test_metrics": false
             }
         }
