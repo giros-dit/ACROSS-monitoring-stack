@@ -1,13 +1,16 @@
 import pandas as pd
 from tabulate import tabulate 
 
-df1 = pd.read_csv("latency-test-r1.csv").astype(float)
-df2 = pd.read_csv("latency-test-r2.csv").astype(float)
-df3 = pd.read_csv("latency-test-r3.csv").astype(float)
-df4 = pd.read_csv("latency-test-r4.csv").astype(float)
+df1 = pd.read_csv("latency-test-r1-stress.csv").astype(float)
+#df2 = pd.read_csv("latency-test-r2.csv").astype(float)
+#df3 = pd.read_csv("latency-test-r3.csv").astype(float)
+df4 = pd.read_csv("latency-test-r4-stress.csv").astype(float)
 
-routers = [df1, df2, df3, df4]
-router_names = ["R1", "R2", "R3", "R4"]
+#routers = [df1, df2, df3, df4]
+routers = [df1, df4]
+
+#router_names = ["R1", "R2", "R3", "R4"]
+router_names = ["R1", "R4"]
 
 for df in routers:
     df["latency_epoch_collector"] = df["collector_timestamp"] - df["epoch_timestamp"]
@@ -53,8 +56,8 @@ headers = ["Router", "Epoch→Collector(ms)", "Collector→Process(ms)", "Proces
 tabla_str = tabulate(tabla, headers=headers, tablefmt="grid")
 print(tabla_str)
 
-#with open("latency_results.txt", "w") as f:
+#with open("latency_results_stress.txt", "w") as f:
 #    f.write(tabla_str)
-#
-#df_result = pd.DataFrame(tabla, columns=headers)
-#df_result.to_csv("latency_results.csv", index=False)
+
+df_result = pd.DataFrame(tabla, columns=headers)
+df_result.to_csv("latency_results_stress.csv", index=False)
