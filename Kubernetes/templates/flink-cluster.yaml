@@ -22,7 +22,7 @@ spec:
         memory: "2Gi"
         cpu: "500m"
   flinkProperties:
-    taskmanager.numberOfTaskSlots: "20"
+    taskmanager.numberOfTaskSlots: "4"
   #job:
   #jarFile: /opt/flink/usrlib/traffic-rate-1.0.jar
   #args: ["kafka-service:9092", "TD_r1", "TP_r1", "1"]
