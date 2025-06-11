@@ -55,6 +55,9 @@ chmod +x ./scripts/create-topics-kafka.sh
 
 # Deploy Apache Flink Operator Cluster
 kubectl apply -f ./templates/flink-cluster.yaml
+kubectl wait --for=condition=ready --timeout=600s pod/flink-job-cluster-jobmanager-0
+kubectl wait --for=condition=ready --timeout=600s pod/flink-job-cluster-taskmanager-0
+kubectl wait --for=condition=ready --timeout=600s pod/flink-job-cluster-taskmanager-1
 
 # Deploy Flink Job submitters and Machine Learning Dummies for each router
 ROUTERS=$(jq -r '.routers[] | keys[]' config/config.json)

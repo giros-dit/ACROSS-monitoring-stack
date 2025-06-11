@@ -18,8 +18,7 @@ kubectl delete -f ./templates/flink-cluster.yaml
 kubectl delete -f ./templates/kafka-producer.yaml
 
  # Delete Kubernetes deployment for Kafka Broker
-#kubectl delete -f ./templates/kafka.yaml
-kubectl delete 
+kubectl delete -f ./templates/kafka.yaml
 
  # Delete Kubernetes deployment for Zookeeper Server
 kubectl delete -f ./templates/zookeeper.yaml

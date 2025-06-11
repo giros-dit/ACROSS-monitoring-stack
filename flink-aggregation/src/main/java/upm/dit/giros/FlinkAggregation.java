@@ -205,7 +205,7 @@ public class FlinkAggregation {
                 }
 
                 // Interface aggregated node capacity occupation metric calculus
-                nodeOccupation = ((byteCounterRate * 8) / ((double) interfaces.length() * max_throughput * 1000000)) * 100;
+                nodeOccupation = ((byteCounterRate * 8) / ((double) max_throughput * 1000000)) * 100;
 
                 // Interface aggregated average packet length metric format     
                 JSONObject packetLengthMetric = new JSONObject(new LinkedHashMap<>());

@@ -10,7 +10,7 @@
             "r1": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r1_9100.json",
                 "topic": "TD_r1",
-                "interfaces": ["eth3"],
+                "interfaces": ["eth2", "eth3"],
                 "test_metrics": false
             }
         },
@@ -18,7 +18,7 @@
             "r2": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r2_9100.json",
                 "topic": "TD_r2",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth2", "eth3"],
                 "test_metrics": false
             }
         },
@@ -26,7 +26,7 @@
             "r3": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r3_9100.json",
                 "topic": "TD_r3",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth1","eth2"],
                 "test_metrics": false
             }
         },
@@ -34,7 +34,7 @@
             "r4": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r4_9100.json",
                 "topic": "TD_r4",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth2", "eth3"],
                 "test_metrics": false
             }
         },
@@ -42,7 +42,7 @@
             "r5": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r5_9100.json",
                 "topic": "TD_r5",
-                "interfaces": ["eth2"],
+                "interfaces": ["eth1","eth2"],
                 "test_metrics": false
             }
         },
@@ -50,7 +50,7 @@
             "r6": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r6_9100.json",
                 "topic": "TD_r6",
-                "interfaces": ["eth3"],
+                "interfaces": ["eth2","eth3"],
                 "test_metrics": false
             }
         },
@@ -58,7 +58,7 @@
             "r7": {
                 "collector_url": "http://node-exporter-collector-service:8000/metrics/r7_9100.json",
                 "topic": "TD_r7",
-                "interfaces": ["eth1"],
+                "interfaces": ["eth1","eth2"],
                 "test_metrics": false
             }
         }
