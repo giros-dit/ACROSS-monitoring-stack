@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-models-r5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: ml-models-r5-app
+  template:
+    metadata:
+      labels:
+        app: ml-models-r5-app
+    spec:
+      volumes:
+        - configMap:
+            defaultMode: 0755
+            name: ml-inference
+          name: ml-inference
+        - configMap:
+            defaultMode: 0755
+            name: ml-models-configmap
+          name: ml-models-configmap
+        - name: ml-inference-models
+          emptyDir: {}
+      initContainers:
+      - name: download-models
+        image: busybox
+        env:
+        - name: MODEL_TYPE
+          value: "linear"
+        - name: ROUTER_TYPE
+          value: "huawei"
+        command: ["sh", "-c"]
+        args:
+          - |
+            for URL in $(cat /etc/config/models/${ROUTER_TYPE}.${MODEL_TYPE}); do
+              echo "Downloading model from $URL"
+              wget -P /app/models/$ROUTER_TYPE/$MODEL_TYPE "$URL"
+            done
+        volumeMounts:
+        - name: ml-inference-models
+          mountPath: /app/models/huawei/linear
+        - name: ml-models-configmap
+          mountPath: /etc/config/models
+      containers:
+      - name: ml-model-r5-service
+        image: mariovicente/ml_models:latest
+        #command: ["python3", "-u", "/ml/ml.py"]
+        #args: ["TP_r1", "ML_r1"]
+        volumeMounts:
+        - name: ml-inference
+          mountPath: /app/inference.py
+          subPath: inference.py
+        - name: ml-models-configmap
+          mountPath: /etc/config/models
+        - name: ml-inference-models
+          mountPath: /app/models/huawei/linear
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: MODEL_TYPE
+          value: "linear"
+        - name: ROUTER_TYPE
+          value: "huawei"
+        - name: MODEL_VERSION
+          value: "1.0.0"
+        - name: KAFKA_INPUT_TOPIC
+          value: "TP_r5"
+        - name: KAFKA_OUTPUT_TOPIC
+          value: "ML_r5"
+        - name: KAFKA_BROKERS
+          value: "kafka-service:9092"
+        - name: LOG_LEVEL
+          value: "INFO"
+        - name: EPSILON
+          value: "0.01"

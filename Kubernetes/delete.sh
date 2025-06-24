@@ -6,8 +6,8 @@ cd $SCRIPT_DIR
  # For every router delete ML Dummy, Flink Job Submitter and Router deployments
 ROUTERS=$(jq -r '.routers[] | keys[]' config/config.json)
 for router in $ROUTERS; do
-    kubectl delete -f "./templates/ml/ml-${router}.yaml"
-    #kubectl delete -f "./templates/routers/${router}.yaml"
+    kubectl delete -f "./templates/ml_models/ml_models_${router}.yaml"
+    rm "./templates/ml_models/ml_models_${router}.yaml"
     kubectl delete -f "./templates/jobs/flink-job-submitter-${router}.yaml"
 done
 

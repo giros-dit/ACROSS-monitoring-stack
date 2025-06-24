@@ -169,7 +169,7 @@ services:
       - PYTHONUNBUFFERED=1
       - MODEL_TYPE=linear
       - ROUTER_TYPE=huawei
-      - MODEL_VERSION=1.0.0
+      - MODEL_VERSION=1.0.0   
       - KAFKA_INPUT_TOPIC=TP_r1
       - KAFKA_OUTPUT_TOPIC=ML_r1
       - KAFKA_BROKERS=kafka:9092

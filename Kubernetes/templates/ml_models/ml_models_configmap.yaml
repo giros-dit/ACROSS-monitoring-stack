@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ml-models-configmap
+data:
+  huawei.linear: |
+    http://138.4.7.244:8080/huawei/linear/model_v1.0.0.pkl
+    http://138.4.7.244:8080/huawei/linear/metadata_v1.0.0.yaml
+  huawei.MLP: |
+    http://138.4.7.244:8080/huawei/MLP/model_v1.0.0.pkl
+    http://138.4.7.244:8080/huawei/MLP/metadata_v1.0.0.yaml
+    http://138.4.7.244:8080/huawei/MLP/scaler_v1.0.0.pkl
+  huawei.polynomial: |
+    http://138.4.7.244:8080/huawei/polynomial/model_v1.0.0.pkl
+    http://138.4.7.244:8080/huawei/polynomial/metadata_v1.0.0.yaml
+  huawei.rf: |
+    http://138.4.7.244:8080/huawei/rf/model_v1.0.0.pkl
+    http://138.4.7.244:8080/huawei/rf/metadata_v1.0.0.yaml
