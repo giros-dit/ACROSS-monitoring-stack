@@ -6,7 +6,9 @@ FROM ubuntu:jammy
 # Some labels are defined to store metadata.
 LABEL image_version="1.0.1"
 LABEL app_version="1.0.1"
-LABEL maintainer="Mario"
+
+LABEL maintainer="mariov22 mariovicente"
+LABEL description="Docker image for kafka producer microservice."
 
 # Variables to automatically install/update tzdata.
 ARG DEBIAN_FRONTEND=noninteractive
