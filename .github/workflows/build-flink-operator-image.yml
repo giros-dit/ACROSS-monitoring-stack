@@ -4,6 +4,8 @@ on:
     branches: [ main ]
     paths:
       - Kubernetes/docker/flink/**
+  workflow_dispatch:
+
 
 jobs:
   deploy:
