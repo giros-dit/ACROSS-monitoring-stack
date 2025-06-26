@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6.18.0
         with:
-          context: Kubernetes/docker/kafka-producer
+          context: Kubernetes/docker/kafka_producer
           push: true
           tags: |
             ghcr.io/${{ steps.repo-name.outputs.lowercase }}/kafka-producer:latest

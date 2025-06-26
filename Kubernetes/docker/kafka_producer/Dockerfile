@@ -7,7 +7,8 @@ FROM ubuntu:jammy
 LABEL image_version="1.0.1"
 LABEL app_version="1.0.1"
 
-LABEL author="mariov22 <mario.vicente.albertos@alumnos.upm.es>"
+LABEL author="Mario Vicente Albertos"
+LABEL maintainer="mariov22 <mario.vicente.albertos@alumnos.upm.es>"
 LABEL description="Docker image for kafka producer microservice."
 
 # Variables to automatically install/update tzdata.
