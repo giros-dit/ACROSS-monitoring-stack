@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - Kubernetes/docker/kafka-producer/**
+      - Kubernetes/docker/kafka_producer/**
 
 jobs:
   deploy:
@@ -29,4 +29,4 @@ jobs:
           context: Kubernetes/docker/kafka-producer
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/kafka-producer:latest
+            ghcr.io/${{ github.repository }}/kafka_producer:latest
