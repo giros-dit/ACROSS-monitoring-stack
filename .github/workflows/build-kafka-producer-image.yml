@@ -16,6 +16,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4.2.2
 
+      - name: Change repo name to lowercase
+        uses: ASzc/change-string-case-action@v6
+        id: repo-name
+        with:
+          string: ${{ github.repository }}
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3.4.0
         with:
@@ -29,4 +35,4 @@ jobs:
           context: Kubernetes/docker/kafka-producer
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/kafka_producer:latest
+            ghcr.io/${{ steps.repo-name.outputs.lowercase }}/kafka-producer:latest
