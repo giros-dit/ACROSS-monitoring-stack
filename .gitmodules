@@ -1,0 +1,6 @@
+[submodule "docker/ml_models"]
+	path = docker/ml_models
+	url = git@github.com:giros-dit/TC32_ML.git
+[submodule "Kubernetes/docker/ml_models"]
+	path = Kubernetes/docker/ml_models
+	url = git@github.com:giros-dit/TC32_ML.git

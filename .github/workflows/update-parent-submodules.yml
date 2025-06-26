@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
         with: 
-          repository: giros-dit/b5g-across-experiment-stack
+          repository: giros-dit/b5g-across-tc32
           token: ${{ secrets.ACTIONS_PAT }}
           submodules: true
 
