@@ -16,9 +16,8 @@ jobs:
           token: ${{ secrets.ACTIONS_PAT }}
           submodules: true
 
-      - name: Pull & update submodules recursively
+      - name: Update submodules recursively
         run: |
-          git submodule update --init --recursive
           git submodule update --recursive --remote
 
       - uses: stefanzweifel/git-auto-commit-action@v6.0.1
